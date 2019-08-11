@@ -1,0 +1,46 @@
+<!-- Form Mixin-->
+<!-- Input Mixin-->
+<!-- Button Mixin-->
+<!-- Pen Title-->
+<!-- Form Module-->
+<div class="login container h-100">
+  <div class="row align-items-center h-100">
+    <div class="col-12 mx-auto">
+      <div class="jumbotron">
+
+        <div class="module form-module">
+          <div class="toggle" (click)="status=!status"><i class="fa" [ngClass]=" status ? 'fa-times' : 'fa-pencil'"></i>
+            <div class="tooltip">Click Me</div>
+          </div>
+          <div [ngClass]="status ? 'd-none' : 'd-block'" class="form">
+            <h2>Login to your account</h2>
+            <form [formGroup]="loginData" (ngSubmit)="onSubmit($event)">
+              <input type="text" placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+              <input type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+            <alert></alert>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+          <div [ngClass]="status ? 'd-block' : 'd-none'" class="form">
+            <h2>Create an account</h2>
+            <form>
+              <input type="text" placeholder="Username" />
+              <input type="password" placeholder="Password" />
+              <input type="email" placeholder="Email Address" />
+              <input type="tel" placeholder="Phone Number" />
+              <alert></alert>
+              <button>Register</button>
+            </form>
+          </div>
+          <div class="cta"><a href="/">Forgot your password?</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
