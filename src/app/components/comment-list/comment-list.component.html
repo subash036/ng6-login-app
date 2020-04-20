@@ -1,0 +1,26 @@
+<div class="comment-block">
+      <p>
+          Message History
+      </p>
+      <div>
+          <ul class="comment-li">
+              <li *ngFor='let comment of comments | async | keyvalue'>
+                  {{comment.value.comment}}
+              </li>
+          </ul>
+      </div>
+      <div class="text-center" *ngIf='typing | async'>Someone Typing...</div>
+      <div>
+          <form [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm)">
+              <div class="form-row">
+                  <div class="form-group col">
+                      <label style="display:inline-block"> Message:</label>
+                      <input style="display:inline-block" [(ngModel)]="description" (keyup)='typingComments(true)'  (blur)='typingComments(false)' class="form-control" formControlName="comment" />
+                  </div>
+              </div>
+              <div class="text-center">
+                  <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>

@@ -46,7 +46,9 @@
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
     "typescript": "~3.5.3",
-    "zone.js": "~0.10.1"
+    "zone.js": "~0.10.1",
+    "ngx-socket-io": "^3.0.1",
+    "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.802.1",

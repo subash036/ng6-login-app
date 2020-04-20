@@ -20,12 +20,22 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { NgxSpinnerModule } from "ngx-spinner";
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { environment } from '../environments/environment';
+
+
+const config: SocketIoConfig = { url: environment.apiUrl, options: {} };
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    CommentListComponent
 
   ],
   imports: [
@@ -47,8 +57,12 @@ import { NgxSpinnerModule } from "ngx-spinner";
       primaryColour: '#ffffff',
       secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff'
-  }),
-  NgxSpinnerModule
+    }),
+    NgxSpinnerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SocketIoModule.forRoot(config),
+
 
   ],
   providers: [
@@ -57,7 +71,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     HttpClient,
     AuthenticationService, AlertService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

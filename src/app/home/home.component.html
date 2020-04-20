@@ -4,7 +4,7 @@
       <h5 class="section-title h1">USERS</h5>
       <div class="row">
           <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let singleUser of userList">
+          <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let singleUser of userList | slice:0:2;">
               <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                   <div class="mainflip">
                       <div class="frontside">
@@ -104,3 +104,6 @@
   </div>
 </section>
 <!-- Team -->
+
+<app-comment-list></app-comment-list>
+
